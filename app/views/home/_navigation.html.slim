@@ -1,0 +1,27 @@
+- initial_pct = 100.0 / total_sliders
+- dot_base = 'h-1.5 w-1.5 shrink-0 cursor-pointer rounded-full border-0 bg-zinc-600/90 p-0 transition-all duration-250 ease-out hover:bg-zinc-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-300/80 [.is-active]:h-2 [.is-active]:w-8 [.is-active]:rounded-full [.is-active]:bg-white [.is-active]:shadow-[0_0_0_3px_rgba(251,191,36,0.28)]'
+
+nav class="pointer-events-none fixed bottom-0 left-0 right-0 z-50 p-3 pb-4 sm:p-4 md:p-5" aria-label="Slide navigation"
+  div class="pointer-events-auto mx-auto flex w-full max-w-2xl flex-col gap-4 rounded-3xl border border-white/10 bg-zinc-950/90 p-3 pl-5 pr-3 shadow-2xl shadow-black/40 ring-1 ring-white/5 backdrop-blur-xl sm:flex-row sm:items-center sm:justify-between sm:gap-3 sm:rounded-full sm:py-2.5 sm:pl-6 sm:pr-4 md:max-w-3xl"
+    div class="flex min-w-0 flex-1 items-center gap-3 sm:gap-4"
+      p class="m-0 inline-flex items-baseline gap-1 font-mono text-lg font-semibold tabular-nums text-white sm:text-xl"
+        span.text-amber-400 data-slider-target="indexDisplay"
+          | 1
+        span.text-sm.font-normal.text-zinc-500 aria-hidden="true"
+          | /
+        span.text-zinc-400
+          = total_sliders
+      div class="h-1 min-w-12 flex-1 overflow-hidden rounded-full bg-zinc-800 sm:min-w-24"
+        div class="h-full rounded-full bg-gradient-to-r from-amber-500 to-amber-300 transition-[width] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:duration-150" data-slider-target="progressBar" style="width: #{initial_pct}%;"
+    .flex.flex-wrap.items-center.justify-center class="gap-2 sm:gap-2.5"
+      - total_sliders.times do |i|
+        button type="button" class="#{dot_base}#{' is-active' if i.zero?}" data-slider-target="dot" data-slide-index=i data-action="click->slider#goTo" aria-label=("Go to slide #{i + 1}")
+    .flex.shrink-0.items-center class="gap-2 sm:gap-2.5"
+      button type="button" class="inline-flex h-10 items-center justify-center gap-1 rounded-full border border-zinc-700 bg-zinc-900/80 px-3 text-sm font-medium text-zinc-200 transition-colors hover:border-zinc-600 hover:bg-zinc-800 disabled:cursor-not-allowed disabled:opacity-40" disabled=true data-slider-target="prevButton" data-action="click->slider#prev" aria-label="Previous slide"
+        = lucide_icon('chevron-left', class: 'size-4')
+        span class="max-sm:sr-only"
+          | Previous
+      button type="button" class="inline-flex h-10 items-center justify-center gap-1 rounded-full bg-gradient-to-r from-amber-500 to-amber-400 px-4 text-sm font-semibold text-zinc-950 shadow-lg shadow-amber-900/25 transition-[transform,box-shadow] hover:from-amber-400 hover:to-amber-300 hover:shadow-amber-900/30 active:scale-[0.97] disabled:cursor-not-allowed disabled:opacity-40 motion-reduce:transition-none motion-reduce:active:scale-100" data-slider-target="nextButton" data-action="click->slider#next" aria-label="Next slide"
+        span class="max-sm:sr-only"
+          | Next
+        = lucide_icon('chevron-right', class: 'size-4')

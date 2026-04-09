@@ -9,7 +9,7 @@ module.exports = {
     'app/frontend/**/*.{js,jsx,ts,tsx,vue}',
     'app/frontend/**/**/*.{js,jsx,ts,tsx,vue}',
     'app/frontend/entrypoints/*.js',
-    'app/frontend/stylesheets/*.scss',
+    'app/frontend/stylesheets/**/*.scss',
     'app/frontend/images/icons/*.svg',
     'config/initializers/simple_form.rb',
     'config/initializers/simple_form_daisyui.rb',
