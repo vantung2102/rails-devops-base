@@ -1,0 +1,74 @@
+- aws_sliders.each do |slider|
+  section[data-slider-target="slide" aria-label=slider.fetch(:screen_reader_label) class='absolute inset-0 z-0 overflow-y-auto opacity-0 pointer-events-none translate-x-4 transition-[opacity,transform] duration-[650ms] ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:translate-x-0 motion-reduce:transition-opacity motion-reduce:duration-200 [.is-active]:opacity-100 [.is-active]:pointer-events-auto [.is-active]:z-10 flex flex-col bg-zinc-100 px-4 pb-40']
+    div class='relative container z-10 mx-auto pt-5'
+      div class="mb-8 overflow-hidden rounded-3xl bg-white shadow-sm"
+        div class="flex flex-col md:flex-row"
+          div class="hidden w-1 shrink-0 self-stretch md:block bg-indigo-700" aria-hidden="true"
+
+          div class="flex-1 p-6"
+            p class="mb-3 inline-flex items-center rounded-full border px-3 font-bold uppercase text-indigo-700"
+              = slider.fetch(:badge_label)
+            h2 class="text-[clamp(1.65rem,4vw,2.35rem)] font-extrabold leading-tight tracking-tight text-zinc-900"
+              = slider.fetch(:official_name)
+            p class="mt-2 text-base font-semibold leading-snug text-zinc-800 md:text-lg"
+              = slider.fetch(:friendly_title)
+            p class="mt-2 text-pretty text-base font-medium leading-relaxed text-zinc-600 md:text-lg"
+              = slider.fetch(:benefit_headline)
+            p class="mt-3 max-w-3xl text-sm leading-relaxed text-zinc-500 md:text-[0.95rem]"
+              = slider.fetch(:context_line)
+
+      div class="grid grid-cols-2 gap-5 mb-8"
+        article class="p-6 opacity-0 translate-y-3 [.is-active_&]:opacity-100 [.is-active_&]:translate-y-0 relative overflow-hidden rounded-3xl bg-white border-l-4 [.is-active_&]:[transition-delay:50ms] border-l-indigo-500"
+          header class="mb-3 flex items-start gap-4 md:mb-4 md:gap-5"
+            div class="flex min-w-0 flex-1 items-center gap-4 md:gap-5"
+              span class="inline-flex size-11 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br text-white shadow-lg md:size-14 from-indigo-400 to-indigo-600 shadow-indigo-500/30"
+                = lucide_icon('lightbulb', class: 'size-5 md:size-6')
+              .flex.min-w-0.flex-col.gap-0.5
+                span class="text-[0.65rem] font-bold uppercase tracking-[0.12em] text-indigo-600"
+                  | Ý tưởng
+                span class="text-lg font-bold leading-snug text-zinc-900 md:text-xl"
+                  | Khái niệm cốt lõi
+          ol class="m-0 flex list-none flex-col gap-1.5 p-0 md:gap-2"
+            - slider.fetch(:teaching_points_html).each_with_index do |item, idx|
+              li class="flex items-start gap-4 border border-zinc-200/70 m-0 list-none rounded-xl bg-zinc-50/65 py-2.5 pl-3 pr-3 outline-none shadow-[0_1px_0_rgba(255,255,255,0.85)_inset] border-l border-indigo-400/70"
+                span class="inline-flex size-7 shrink-0 items-center justify-center rounded-full text-xs font-bold tabular-nums mt-0.5 text-indigo-700 bg-indigo-100"
+                  = idx + 1
+                span class="flex-1 min-w-0 text-[0.9375rem] leading-relaxed text-zinc-700 m-0 md:text-base [&_strong]:font-semibold [&_strong]:text-zinc-900 [&_em]:italic [&_em]:text-zinc-600 [&_code]:rounded-lg [&_code]:border [&_code]:border-zinc-200 [&_code]:bg-zinc-50 [&_code]:px-1.5 [&_code]:py-0.5 [&_code]:font-mono [&_code]:text-[0.875em] [&_code]:text-zinc-800 [&_p]:mb-2 [&_p:last-child]:mb-0"
+                  == item
+
+        article class="p-6 opacity-0 translate-y-3 [.is-active_&]:opacity-100 [.is-active_&]:translate-y-0 relative overflow-hidden rounded-3xl bg-white border-l-4 [.is-active_&]:[transition-delay:120ms] border-l-violet-600"
+          header class="mb-3 flex items-start gap-4 md:mb-4 md:gap-5"
+            div class="flex min-w-0 flex-1 items-center gap-4 md:gap-5"
+              span class="inline-flex size-11 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br text-white shadow-lg md:size-14 from-violet-400 to-violet-600 shadow-violet-500/30"
+                = lucide_icon('target', class: 'size-5 md:size-6')
+              .flex.min-w-0.flex-col.gap-0.5
+                span class="text-[0.65rem] font-bold uppercase tracking-[0.12em] text-violet-600"
+                  | Tại sao
+                span class="text-lg font-bold leading-snug text-zinc-900 md:text-xl"
+                  | Giá trị vận hành
+          ol class="m-0 flex list-none flex-col gap-1.5 p-0 md:gap-2"
+            - slider.fetch(:value_for_operations).each_with_index do |item, idx|
+              li class="flex items-start gap-4 border border-zinc-200/70 m-0 list-none rounded-xl bg-zinc-50/65 py-2.5 pl-3 pr-3 outline-none shadow-[0_1px_0_rgba(255,255,255,0.85)_inset] border-l border-violet-400/70"
+                span class="inline-flex size-7 shrink-0 items-center justify-center rounded-full text-xs font-bold tabular-nums mt-0.5 text-violet-700 bg-violet-100"
+                  = idx + 1
+                span class="flex-1 min-w-0 text-[0.9375rem] leading-relaxed text-zinc-700 m-0 md:text-base [&_strong]:font-semibold [&_strong]:text-zinc-900 [&_em]:italic [&_em]:text-zinc-600 [&_code]:rounded-lg [&_code]:border [&_code]:border-zinc-200 [&_code]:bg-zinc-50 [&_code]:px-1.5 [&_code]:py-0.5 [&_code]:font-mono [&_code]:text-[0.875em] [&_code]:text-zinc-800 [&_p]:mb-2 [&_p:last-child]:mb-0"
+                  = item
+
+      div class="overflow-hidden rounded-3xl bg-white shadow-sm"
+        article class="p-6 opacity-0 translate-y-3 [.is-active_&]:opacity-100 [.is-active_&]:translate-y-0 relative overflow-hidden rounded-3xl bg-white border-l-4 [.is-active_&]:[transition-delay:200ms] border-l-cyan-700"
+          header class="mb-3 flex items-start gap-4 md:mb-4 md:gap-5"
+            div class="flex min-w-0 flex-1 items-center gap-4 md:gap-5"
+              span class="inline-flex size-11 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br text-white shadow-lg md:size-14 from-cyan-400 to-cyan-700 shadow-cyan-600/30"
+                = lucide_icon('briefcase', class: 'size-5 md:size-6')
+              .flex.min-w-0.flex-col.gap-0.5
+                span class="text-[0.65rem] font-bold uppercase tracking-[0.12em] text-cyan-600"
+                  | Ví dụ / Case
+                span class="text-lg font-bold leading-snug text-zinc-900 md:text-xl"
+                  | Liên hệ dự án
+          ol class="m-0 flex list-none flex-col gap-1.5 p-0 md:gap-2"
+            - slider.fetch(:project_story_examples_html).each_with_index do |item, idx|
+              li class="flex items-start gap-4 border border-zinc-200/70 m-0 list-none rounded-xl bg-zinc-50/65 py-2.5 pl-3 pr-3 outline-none shadow-[0_1px_0_rgba(255,255,255,0.85)_inset] border-l border-cyan-400/70"
+                span class="inline-flex size-7 shrink-0 items-center justify-center rounded-full text-xs font-bold tabular-nums mt-0.5 text-cyan-700 bg-cyan-100"
+                  = idx + 1
+                span class="flex-1 min-w-0 text-[0.9375rem] leading-relaxed text-zinc-700 m-0 md:text-base [&_strong]:font-semibold [&_strong]:text-zinc-900 [&_em]:italic [&_em]:text-zinc-600 [&_code]:rounded-lg [&_code]:border [&_code]:border-zinc-200 [&_code]:bg-zinc-50 [&_code]:px-1.5 [&_code]:py-0.5 [&_code]:font-mono [&_code]:text-[0.875em] [&_code]:text-zinc-800 [&_p]:mb-2 [&_p:last-child]:mb-0"
+                  == item
